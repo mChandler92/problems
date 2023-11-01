@@ -1,0 +1,54 @@
+
+// Complete the insertNodeAtHead function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+// function for adding a SLLNode to the start of a list
+function insertNodeAtHead(llist, data) {
+    // define node to be added
+     let newNode = new SinglyLinkedListNode(data)
+    // sub-function for the event that there is point to the node head
+    if(!llist) {
+        llist = newNode
+        return llist
+    } else {
+   
+    // set next pointer for the new node to the current head pointer        
+    newNode.next = llist
+    // set the the pointer for head node to new node
+    llist = newNode
+    }
+        //returns the value for updated pointer
+      return llist
+}
+
+
+// copied function for testing insertNodeAtHead()
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const llistCount = parseInt(readLine(), 10);
+
+    let llist = new SinglyLinkedList();
+
+    for (let i = 0; i < llistCount; i++) {
+        const llistItem = parseInt(readLine(), 10);
+    	const llist_head = insertNodeAtHead(llist.head, llistItem);
+      	llist.head = llist_head;
+    }
+
+
+
+    printSinglyLinkedList(llist.head, '\n', ws);
+    ws.write('\n');
+
+    ws.end();
+}

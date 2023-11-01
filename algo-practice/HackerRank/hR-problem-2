@@ -1,0 +1,62 @@
+
+// Complete the insertNodeAtTail function below.
+
+/*
+ * For your reference:
+ *
+ * SinglyLinkedListNode {
+ *     int data;
+ *     SinglyLinkedListNode next;
+ * }
+ *
+ */
+
+
+ // returns function for adding new node at the end of an SLL
+function insertNodeAtTail(head, data) {
+    // defines new variable and sets equal to value of current head node
+    let current = head
+    
+    // sub-function for the event that a current head node does not exist
+    if (!head) {
+    let head = new SinglyLinkedListNode(data);
+    return head
+    } else {
+    while (current.next) {
+        current = current.next
+       
+    }    
+
+    // sets next pointer for new head node to a newly created node
+     current.next = new SinglyLinkedListNode(data); 
+
+     // returns value for new head node (via current)
+    return head
+}
+
+}
+
+
+
+
+
+
+// copied function for testing insertNodeAtTail()
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const llistCount = parseInt(readLine(), 10);
+
+    let llist = new SinglyLinkedList();
+
+    for (let i = 0; i < llistCount; i++) {
+        const llistItem = parseInt(readLine(), 10);
+    	const llist_head = insertNodeAtTail(llist.head, llistItem);
+      	llist.head = llist_head;
+    }
+
+    printSinglyLinkedList(llist.head, '\n', ws);
+    ws.write('\n');
+
+    ws.end();
+}
